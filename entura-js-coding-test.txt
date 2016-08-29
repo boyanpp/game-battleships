@@ -1,0 +1,54 @@
+Imagine you are working on a part of a battleship game where a human player can play against an AI player.
+
+The following constructor creates an object which can be used to represent either the human or AI players board.
+the width and height of the board are defined using the xLength and yLength arguments
+
+function GameBoard (xLength, yLength) {
+  this.tiles = []; // will represent the games board
+  this.ships = []; // will contain information on each ship added to the board
+
+  for (var x = 0; x < xLength; x++) {
+    for (var y = 0; y < yLength; y++) {
+      if (!this.tiles[x]) this.tiles[x] = [];
+      this.tiles[x][y] = 0;
+    }
+  }
+}
+
+var board = new GameBoard(10, 10);
+
+once instantiated as above, board.tiles will be the following representation of the 10x10 board:
+[
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+Extend/modify the GameBoard object to include the following functionality:
+- A method which adds a ship of a desired length, name and orientation at specific coordinates on the board - as a human would do at the start of the game.
+    For example: adding a ship of length 3, vertically at coordinates "A1" on the board would result in A1, A2, A3 being taken up by that ship.
+    it should return true if the ship was added to the board successfully
+    it should return false if the ship placement was invalid (if the ship would overlap with another ship, or if it would be plotted outside of the game board)
+
+- A method which "fires" at specific coordinates on the board, it should return one of the strings "hit", "miss" or "destroyed", depending on the result of the shot.
+    NOTE: it should not be possible to fire at the same coordinates twice.
+
+- A method which returns information/status on each ship which has been placed on the board (ship name, length, coordinates, number of times hit)
+
+Examples of things which will get you bonus points:
+- Demonstrating a knowledge of DRY principles.
+- Demonstrating a knowledge of TDD.
+- Add a method which ALWAYS adds a ship of a desired length & name at a random position and random orientation on the board if it is possible to do so. (imagine this could be used to create the AI players ships)
+    Note: it should not be possible for ships to overlap, or extend beyond the boundaries of the board.
+- Adding any  other functionality/additional objects you feel might be necessary to create a working game of battleships.
+- Creating a UI which uses the GameBoard object to visualise a players board.
+
+Feel free to use any libraries/modules/tooling which you feel will improve the quality/readability of your code and/or help you get the job done quicker!
+If you're lacking in time to complete the test, feel free to do as much as you can and focus on the quality of your code rather than quantity.
